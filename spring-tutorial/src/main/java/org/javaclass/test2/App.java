@@ -3,6 +3,8 @@ package org.javaclass.test2;
 import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,12 +15,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class App {
 	
-	private HelloWorld helloWorld;
+	@Value("${number}")
+	private int number;
+	
+	@Value("${test}")
+	private String test;
+	
+	private Say say;
 	
 	@Autowired
-	public App(HelloWorld helloWorld) {
-		this.helloWorld = helloWorld;
-		
+	public App(@Qualifier("helloWorld") Say say) {
+		this.say = say;
 	}
 
 	@PostConstruct
@@ -27,10 +34,12 @@ public class App {
 	}
 	
 	public void saySomething1() {
-		helloWorld.sayHello("Java class 1");
+		say.say("Java class 1");
+		System.out.println(number);
+		System.out.println(test);
 	}
 
 	public void sayAnything() {
-		helloWorld.sayHello("Java class 1");
+		say.say("Java class 1");
 	}
 }

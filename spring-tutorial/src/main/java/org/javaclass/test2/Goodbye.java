@@ -3,8 +3,10 @@ package org.javaclass.test2;
 import org.springframework.stereotype.Component;
 
 @Component
-public class HelloWorld implements Say {
+public class Goodbye implements Say {
+
 	public void say(String name) {
-		System.out.println("new version of helloworld say hello:" + name);
+		System.out.println("Version of Goodbye say goodbye:" + name);
 	}
+
 }

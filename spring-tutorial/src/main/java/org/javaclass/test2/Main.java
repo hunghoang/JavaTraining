@@ -23,18 +23,23 @@ public class Main {
 		context.getBean(App2.class).saySomething2();
 	}
 	
-	public static void main3(String[] args) {
+	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("beans2.xml");
 		context.getBean(App.class).saySomething1();
 		context.getBean(App.class).sayAnything();
 		context.getBean(App2.class).saySomething2();
 	}
 	
-	public static void main(String[] args) {
+	public static void main4(String[] args) {
 		AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext();
 		context.refresh();
 		context.scan("org.javaclass.test2");
+		
+		
+		
+		
 		context.getBean(App.class).saySomething1();
 		context.getBean(App2.class).saySomething2();
+		((App) context.getBean("app")).saySomething1();
 	}
 }

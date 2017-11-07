@@ -8,9 +8,12 @@
 
 	<context:annotation-config />
 
-	<context:component-scan base-package="org.javaclass.test2" />
+	<context:property-placeholder location="classpath:config.properties" />
 
-	<bean id="hello" class="org.javaclass.test2.HelloWorld">
+	<bean id="helloWorld" class="org.javaclass.test2.HelloWorld">
+	</bean>
+	
+	<bean id="goodbye" class="org.javaclass.test2.Goodbye">
 	</bean>
 
 	<bean id="app1" class="org.javaclass.test2.App">
